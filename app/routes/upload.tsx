@@ -1,4 +1,3 @@
-import type { E } from "node_modules/vite/dist/node/moduleRunnerTransport.d-DJ_mE5sf";
 import { useState, type FormEvent } from "react";
 import FileUploader from "~/components/FileUploader";
 import Navbar from "~/components/Navbar";
@@ -37,7 +36,7 @@ const Upload = () => {
           {isProcessing ? (
             <>
               <h2>{statusText}</h2>
-              <img src="/images/resume-scan.gif" className="w-full" />
+              <img src="/images/resume-scan.gif" className="w-full" alt="resume scan"/>
             </>
           ) : (
             <h2>Drop your resume for an ATS score and feedback</h2>

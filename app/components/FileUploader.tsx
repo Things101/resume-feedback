@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { formatSize } from "~/lib/utils";
 
@@ -16,7 +16,7 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
     [onFileSelect]
   );
 
-  const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
+  const { getRootProps, getInputProps, acceptedFiles } =
     useDropzone({
       onDrop,
       multiple: false,
@@ -48,10 +48,13 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
                   </p>
                 </div>
               </div>
-              <button className="p-2 cursor-pointer" onClick={(e) => {
-                onFileSelect?.(null);
-              }}>
-                <img src="/icons/cross.svg" alt="remove" className="w-4 h-4" /> 
+              <button
+                className="p-2 cursor-pointer"
+                onClick={(e) => {
+                  onFileSelect?.(null);
+                }}
+              >
+                <img src="/icons/cross.svg" alt="remove" className="w-4 h-4" />
               </button>
             </div>
           ) : (
