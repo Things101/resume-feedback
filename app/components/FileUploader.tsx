@@ -16,13 +16,12 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
     [onFileSelect]
   );
 
-  const { getRootProps, getInputProps, acceptedFiles } =
-    useDropzone({
-      onDrop,
-      multiple: false,
-      accept: { "application/pdf": [".pdf"] },
-      maxSize: 20 * 1024 * 1024, // 20MB
-    });
+  const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
+    onDrop,
+    multiple: false,
+    accept: { "application/pdf": [".pdf"] },
+    maxSize: 20 * 1024 * 1024, // 20MB
+  });
 
   const file = acceptedFiles[0] || null;
 
@@ -35,7 +34,14 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
           {file ? (
             <div
               className="uploader-selected-file"
+              role="button"
+              tabIndex={0}
               onClick={(e) => e.stopPropagation()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.stopPropagation();
+                }
+              }}
             >
               <img src="/images/pdf.png" alt="pdf" className="size-10" />
               <div className="flex items-center space-x-3">
